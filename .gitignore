@@ -1,3 +1,15 @@
-# /modules/
-/modules/inventory
-pscr_log
+vendor/
+build/
+logs/
+reports/
+dist/
+download/
+/.settings/
+*.iml
+.buildpath
+.project
+.idea
+composer.phar
+/.phpcs-cache
+phpbench.phar
+phpbench.phar.pubkey
