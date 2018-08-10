@@ -1,0 +1,27 @@
+"repositories": [
+    {
+        "type": "package",
+        "package": {
+            "name": "netcrave/pscr_core",
+            "version": "dev-master",
+            "source": {
+                "url": "git://github.com/netcrave/pscr_core.git",
+                "type": "git",
+                "reference": "master"
+            },
+            "autoload": {
+                "psr-0" : {
+		    "pscr\\lib\\configuration": "src/pscr/lib/configuration",
+		    "pscr\\lib\\exceptions": "src/pscr/lib/exceptions",
+		    "pscr\\lib\\http": "src/pscr/lib/http",
+                    "pscr\\lib\\logging": "src/pscr/lib/logging",
+		    "pscr\\lib\\management": "src/pscr/lib/management",
+		    "pscr\\lib\\management\\modules": "src/pscr/lib/management/modules",
+	 	    "pscr\\lib\\model": "src/pscr/lib/model",
+		    "pscr\\lib\\router": "src/pscr/lib/router",
+		    "pscr\\lib\\session": "src/pscr/lib/session"
+                }
+            }
+        }
+    }
+],
