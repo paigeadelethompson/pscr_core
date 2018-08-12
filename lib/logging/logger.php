@@ -41,6 +41,8 @@ namespace pscr\lib\logging;
 use pscr\lib\configuration\logger_settings;
 use pscr\lib\logging\php_default_logging;
 
+use pscr\lib\exceptions\pscr_exception;
+
 /**
  * Class logger
  * @package pscr\lib\logging
@@ -220,6 +222,7 @@ class logger
         if($this->settings->log_info_messages) {
             $this->_logger->log($from . $this->get_log_string($params), E_USER_ERROR);
         }
+        throw new pscr_exception("logged error");
 	}
 }
 
