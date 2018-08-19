@@ -8,9 +8,14 @@
 
 namespace pscr\lib\session;
 use pscr\lib\model;
+use pscr\lib\logging\logger;
 
 class default_session_backend implements model\i_session_backend
 {
+    function __construct() {
+        session_start();
+        logger::_()->info($this, "php session", session_id());
+    }
 
     function delete($session_id)
     {
@@ -19,11 +24,13 @@ class default_session_backend implements model\i_session_backend
 
     function store($session_id, $key, $data)
     {
-        $_SESSION[$session_id] = $data;
+        logger::_()->info($this, "storing session var", $session_id, $key, $data);
+        $_SESSION[$session_id][$key] = $data;
     }
 
     function retrieve($session_id, $key)
     {
-        return $_SESSION[$session_id];
+        logger::_()->info($this, "retrieving session var", $session_id, $key);
+        return $_SESSION[$session_id][$key];
     }
 }

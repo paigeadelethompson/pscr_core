@@ -50,11 +50,11 @@ class request {
     /**
      * @var
      */
-    private $router;
+    private $_router;
     /**
      * @var
      */
-    private $data;
+    private $_data;
 
     /**
      * @param $name
@@ -70,8 +70,8 @@ class request {
      * @return null
      */
     public function __get($name) {
-        if(array_key_exists($name, $this->data)) {
-            return $this->data[$name];
+        if(array_key_exists($name, $this->_data)) {
+            return $this->_data[$name];
         }
         else {
             return null;
@@ -83,42 +83,42 @@ class request {
      * @param $router
      */
     function  __construct($router) {
-        $this->data = $_REQUEST;
-        $this->router = $router;
+        $this->_data = $_REQUEST;
+        $this->_router = $router;
     }
 
     /**
      * @return mixed
      */
     function get_selected_route_entry_file_name() {
-        return $this->router->get_selected_route_entry_file_name();
+        return $this->_router->get_selected_route_entry_file_name();
     }
 
     /**
      * @return mixed
      */
     function get_selected_route_entry_class_name() {
-        return $this->router->get_selected_route_entry_class_name();
+        return $this->_router->get_selected_route_entry_class_name();
     }
 
     /**
      * @return mixed
      */
     function get_selected_route_entry_path_name() {
-        return $this->router->get_selected_route_entry_path_name();
+        return $this->_router->get_selected_route_entry_path_name();
     }
 
     /**
      * @return mixed
      */
     function get_selected_route_match() {
-        return $this->router->get_selected_route_match();
+        return $this->_router->get_selected_route_match();
     }
 
     /**
      * @return mixed
      */
     function get_selected_route_content_type() {
-        return $this->router->get_selected_route_content_type();
+        return $this->_router->get_selected_route_content_type();
     }
 }

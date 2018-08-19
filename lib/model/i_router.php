@@ -59,4 +59,10 @@ interface i_router
      * @return mixed
      */
     function get_route($uri);
+
+    function get_selected_route_entry_path_name();
+
+    function get_selected_route_entry_file_name();
+
+    function get_selected_route_entry_class_name();
 }

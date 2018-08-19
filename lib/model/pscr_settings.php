@@ -73,7 +73,7 @@ abstract class pscr_settings
      */
     public function __set($name, $value)
     {
-        $this->data[$name] = $value;
+        throw new invalid_argument_exception("settings is readonly");
     }
 
     /**
@@ -83,7 +83,11 @@ abstract class pscr_settings
      */
     public function __get($name)
     {
-       if(array_key_exists($name, $this->data)){
+       if(array_key_exists($name, $this->data)) {
+           if(is_array($this->data[$name])) {
+              return new \ArrayObject($this->data[$name],
+                                     \ArrayObject::ARRAY_AS_PROPS);
+           }
             return $this->data[$name];
         }
         else {
