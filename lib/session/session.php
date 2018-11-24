@@ -73,10 +73,15 @@ class session
         return true;
     }
 
+    function set_authenticated() {
+        $this->authenticated = true;
+    }
+
     function unauthenticated_one_way_encrypt($key, $value) {
-        $this->_one_way_encrypt($key, $value, ($this->salt) ? $this->salt : $this->settings->salt);
+        $this->_one_way_encrypt($key, $value);
         return $this;
     }
+
 
     function unauthenticated_two_way_encrypt($key, $value) {
         if(!openssl_public_encrypt($value, $crypted, $this->settings->server_pub_key))
@@ -90,13 +95,17 @@ class session
 
     function one_way_encrypt($key, $value) {
         if($this->authenticated()) {
-            $this->_one_way_encrypt($key, $value, $this->salt);
+            $this->_one_way_encrypt($key, $value);
             return $this;
         }
         else
         {
             throw new \Exception("can't one_way_encrypt not authenticated");
         }
+    }
+
+    function verify_one_way_hash($value, $hash) {
+        return(password_verify($value, $hash));
     }
 
     function two_way_encrypt($key, $value) {
@@ -130,15 +139,6 @@ class session
         return $this;
     }
 
-    function generate_salt() {
-        $this->salt = $this->settings->generate_salt();
-        return $this;
-    }
-
-    function retrieve_salt() {
-        return $this->salt;
-    }
-    
     function unauthenticated_decrypt($key) {
         return $this->_decrypt($this->server_priv_key, $key);
     }
@@ -160,19 +160,19 @@ class session
             throw new \Exception("failed to decrypt value");
     }
 
-    private function _one_way_encrypt($key, $value, $salt) {
+    private function _one_way_encrypt($key, $value) {
         $options = array(
-            'cost' => $this->settings->cost,
+            'cost' => $this->settings->cost
         );
-
-        if($salt == null) {
-            throw new \Exception('no salt set');
-        }
 
         $this->backend->store($this->cookies['pscr_session_id'],
                               $key,
-                              password_hash($value . $salt,
+                              password_hash($value,
                                             PASSWORD_BCRYPT,
                                             $options));
+    }
+
+    function close() {
+        $this->backend->close();
     }
 }

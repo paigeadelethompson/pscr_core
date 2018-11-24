@@ -14,4 +14,5 @@ interface i_session_backend
     function delete($session_id);
     function store($session_id, $key, $data);
     function retrieve($session_id, $key);
+    function close();
 }

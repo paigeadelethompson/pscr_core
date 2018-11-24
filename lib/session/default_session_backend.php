@@ -33,4 +33,8 @@ class default_session_backend implements model\i_session_backend
         logger::_()->info($this, "retrieving session var", $session_id, $key);
         return $_SESSION[$session_id][$key];
     }
+
+    function close() {
+        session_destroy();
+    }
 }

@@ -34,10 +34,6 @@ class session_settings extends pscr_settings
         }
     }
 
-    public function generate_salt() {
-        return random_bytes(256);
-    }
-
     public function generate_key_pair() {
         $config = array(
             "digest_alg" => "sha512",
