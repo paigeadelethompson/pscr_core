@@ -135,7 +135,7 @@ class logger
                         "line" => $error_line));
                     break;
                 case E_USER_ERROR:
-                case E_FATAL:
+                //case E_FATAL:
                 case E_ERROR:
                     logger::_()->error("PHP set_error_handler", array(
                         "message" => $error_string,
