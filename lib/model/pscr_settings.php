@@ -83,7 +83,7 @@ abstract class pscr_settings
      */
     public function __get($name)
     {
-       if(in_array($name, $this->data[$name])) {
+       if(in_array($name, $this->data)) {
            if(is_array($this->data[$name])) {
               return new \ArrayObject($this->data[$name], \ArrayObject::ARRAY_AS_PROPS);
            }
