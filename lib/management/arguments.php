@@ -1,10 +1,8 @@
 <?php
-
-use pscr\lib\exceptions\not_implemented_exception;
-
 namespace pscr\lib\management;
 
 use pscr\lib\model\i_argument_parser;
+use pscr\lib\exceptions\not_implemented_exception;
 
 /**
  * Class arguments
