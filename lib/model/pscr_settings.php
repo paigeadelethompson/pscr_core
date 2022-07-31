@@ -83,7 +83,7 @@ abstract class pscr_settings
      */
     public function __get($name)
     {
-       if(array_key_exists($name, $this->data)) {
+       if(isset($this->data[$name])) {
            if(is_array($this->data[$name])) {
               return new \ArrayObject($this->data[$name],
                                      \ArrayObject::ARRAY_AS_PROPS);
