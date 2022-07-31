@@ -16,7 +16,7 @@ class stderr_log_writer implements i_log_writer
         if(!file_exists("/dev/stderr")) {
             die("need /dev/stderr for this logging extension.");
         }
-        $this->out_buf = fopen("/dev/stderr", "a+");
+        $this->out_buf = fopen("/dev/stderr", "w");
     }
   
     /**
