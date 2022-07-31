@@ -203,7 +203,7 @@ class logger
             $from = get_class($sender);
         }
         $from .= '() -> ';
-        if($this->settings->log_info_messages) {
+        if($this->settings->log_warn_messages) {
             $this->_logger->log($from . $this->get_log_string($params), E_USER_WARNING);
         }
 	}
@@ -219,7 +219,7 @@ class logger
             $from = get_class($sender);
         }
         $from .= '() -> ';
-        if($this->settings->log_info_messages) {
+        if($this->settings->log_error_messages) {
             $this->_logger->log($from . $this->get_log_string($params), E_USER_ERROR);
         }
         throw new pscr_exception("logged error");
