@@ -53,7 +53,7 @@ class logger_settings extends pscr_settings {
         $section = get_called_class();
         $data = parse_ini_file(PSCR_PROJECT_ROOT . './settings/settings.ini', true);
 
-        if(property_exists($section, $data)) {
+        if(property_exists($data, $section)) {
             $this->data = new \ArrayObject($data[$section], \ArrayObject::ARRAY_AS_PROPS);
         }
         else {
