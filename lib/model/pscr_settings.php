@@ -83,15 +83,14 @@ abstract class pscr_settings
      */
     public function __get($name)
     {
-       if(isset($this->data[$name])) {
-           if(in_array($name, $this->data)) {
-              return new \ArrayObject($this->data[$name],
-                                     \ArrayObject::ARRAY_AS_PROPS);
+       if(in_array($name, $this->data[$name])) {
+           if(is_array($this->data[$name])) {
+              return new \ArrayObject($this->data[$name], \ArrayObject::ARRAY_AS_PROPS);
            }
-            return $this->data[$name];
+           return $this->data[$name];
         }
         else {
-           throw new invalid_argument_exception();
+           //throw new invalid_argument_exception();
         }
     }
 }
