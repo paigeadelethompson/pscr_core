@@ -26,7 +26,7 @@ class session_settings extends pscr_settings
                 return $this->data[$name];
             }
         }
-        else if(array_key_exists($name, $this->data)) {
+        else if($this->data->offsetExists($name)) {
             return $this->data[$name];
         }
         else {
